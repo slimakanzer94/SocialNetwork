@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Hellow world!</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body class="w3-light-grey">
+<div class="w3-container w3-dark-grey w3-opacity w3-right-align">
+    <h1>Super app!</h1>
+</div>
+<div class="w3-light-grey w3-round w3-margin w3-card-4">
+    <th:block test="${not empty msg}">
+        <div class="w3-panel w3-display-container w3-round w3-margin-bottom w3-padding w3-light-green w3-card-4">
+            <span class="w3-button w3-display-topright w3-hover-light-green" onclick="this.parentElement.style.display='none'">X</span>
+            <h3>${msg}</h3>
+        </div>
+    </th:block>
+    <div class="w3-container w3-light-blue w3-round">
+        <h3><span th:text="'Add new user'"></span></h3>
+    </div>
+    <div>
+        <form th:action="@{/registration}" method="post" class="w3-selection w3-light-grey w3-padding">
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" name="name" placeholder="User name" class="w3-input w3-border w3-round-large" style="width: 30%"/>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Password" class="w3-input w3-border w3-round-large" style="width: 30%"/>
+            </div>
+            <button type="submit" class="w3-btn w3-green w3-round-large w3-margin-bottom w3-margin-top">Registration</button>
+        </form>
+    </div>
+</div>
+
+<div class="w3-container w3-dark-grey w3-opacity w3-right-align">
+    <h1>Footer</h1>
+</div>
+</body>
+</html>
