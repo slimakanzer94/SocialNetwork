@@ -1,9 +1,11 @@
 package com.example.demo.controllers;
 
 import com.example.demo.entities.Message;
+import com.example.demo.entities.User;
 import com.example.demo.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,15 +37,19 @@ public class MainController {
     }
 
     @GetMapping("/main")
-    public String main(Model model){
+    public String main(@AuthenticationPrincipal User user,Model model){
         List<Message> messages = messageRepository.findAll();
         model.addAttribute("messages",messages);
+        model.addAttribute("user", user);
         return "main";
     }
 
     @PostMapping ("/main")
-    public String addMessage (@RequestParam String text, @RequestParam String tag){
-        Message message = new Message(text,tag);
+    public String addMessage (
+            @AuthenticationPrincipal User user,
+            @RequestParam String text,
+            @RequestParam String tag){
+        Message message = new Message(text,tag,user);
         messageRepository.save(message);
         return "redirect:/main";
     }

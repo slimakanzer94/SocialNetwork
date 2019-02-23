@@ -13,7 +13,7 @@
 <div class="w3-light-grey w3-round w3-margin w3-card-4">
     <div class="w3-container w3-light-blue w3-center  w3-round">
     <h2>
-        <span th:text="'Hello user!'"></span>
+        <span th:text="'Hello '+${user.getUsername()} + ' !'"></span>
     </h2>
     </div>
     <div>
@@ -41,7 +41,7 @@
     </form>
     </div>
         <ul th:each="msg:${messages}" class="w3-ul w3-margin-bottom">
-            <li th:text="${msg.getText()}">text</li>
+            <li th:text="${msg.getText()} +' from '+${msg.getAutor().getUsername()}">text</li>
         </ul>
     </div>
     <div class="w3-container w3-right-align">
