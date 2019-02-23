@@ -38,7 +38,7 @@ public class MainController {
 
     @GetMapping("/main")
     public String main(@AuthenticationPrincipal User user,Model model){
-        List<Message> messages = messageRepository.findAll();
+        List<Message> messages=messageRepository.findAll();
         model.addAttribute("messages",messages);
         model.addAttribute("user", user);
         return "main";
@@ -55,10 +55,11 @@ public class MainController {
     }
 
     @PostMapping ("/filter")
-    public String addMessage (@RequestParam String filter,Model model){
+    public String addMessage (@AuthenticationPrincipal User user, @RequestParam String filter,Model model){
         List<Message> messages;
         if (!filter.isEmpty() && filter!=null) messages = messageRepository.findByTag(filter);
         else messages=messageRepository.findAll();
+        model.addAttribute("user", user);
         model.addAttribute("messages", messages);
         return "/main";
     }
