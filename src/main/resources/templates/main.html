@@ -13,21 +13,46 @@
 <div class="w3-light-grey w3-round w3-margin w3-card-4">
     <div class="w3-container w3-light-blue w3-center  w3-round">
     <h2>
-        <span th:text="'Hello'"></span>
+        <span th:text="'Hello user!'"></span>
     </h2>
     </div>
-    <div class="w3-container w3-center">
-        <h3>
-        <form th:action="@{/logout}" method="post">
-            <input type="submit" value="Sign Out" class="w3-btn w3-round-large w3-red"/>
-        </form>
-        </h3>
+    <div>
+        <div class="w3-container">
+            <h3>Send message</h3>
+        </div>
+    <form th:action="@{/main}" method="post" class="w3-selection w3-light-grey w3-padding">
+        <div class="form-group">
+            <input type="text" name="text" placeholder="Enter message" class="w3-input w3-border w3-round-large" style="width: 30%"/>
+            <input type="text" name="tag" placeholder="Tag" class="w3-input w3-border w3-round-large" style="width: 30%"/>
+            <button type="submit" class="w3-btn w3-light-blue w3-round-large w3-margin-bottom w3-margin-top">Send</button>
+        </div>
+    </form>
     </div>
-
+    <div>
+        <div class="w3-container">
+        <h3>Messages</h3>
+        </div>
+    <div>
+    <form th:action="@{/filter}" method="post" class="w3-selection w3-light-grey w3-padding">
+        <div class="form-group">
+            <input type="text" name="filter" placeholder="Enter message" class="w3-input w3-border w3-round-large" style="width: 30%"/>
+            <button type="submit" class="w3-btn w3-light-blue w3-round-large w3-margin-bottom w3-margin-top">Find</button>
+        </div>
+    </form>
+    </div>
+        <ul th:each="msg:${messages}" class="w3-ul w3-margin-bottom">
+            <li th:text="${msg.getText()}">text</li>
+        </ul>
+    </div>
+    <div class="w3-container w3-right-align">
+        <form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out" class="w3-btn w3-round-large w3-red w3-margin-bottom"/>
+        </form>
+    </div>
 </div>
 
-<div class="w3-container w3-dark-grey w3-opacity w3-right-align">
-    <h1>Footer</h1>
+<div class="w3-container w3-dark-grey w3-opacity w3-right-align w3-padding">
+    <button class="w3-btn w3-round-large w3-hover-light-grey" onclick="location.href='/login'">Back to login</button>
 </div>
 </body>
 </html>

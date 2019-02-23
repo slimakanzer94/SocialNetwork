@@ -7,7 +7,8 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
-public class Users {
+@Table(name = "users")
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -36,12 +37,12 @@ public class Users {
         this.active = active;
     }
 
-    public Users(String username, String password) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public Users() {
+    public User() {
     }
 
     public Integer getId() {

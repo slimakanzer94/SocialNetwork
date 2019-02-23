@@ -11,12 +11,10 @@
     <h1>Super app!</h1>
 </div>
 <div class="w3-light-grey w3-round w3-margin w3-card-4">
-    <th:block test="${not empty msg}">
-        <div class="w3-panel w3-display-container w3-round w3-margin-bottom w3-padding w3-light-green w3-card-4">
+        <div th:unless="${msg}==null" class="w3-panel w3-display-container w3-round w3-margin-bottom w3-padding w3-light-green w3-card-4">
             <span class="w3-button w3-display-topright w3-hover-light-green" onclick="this.parentElement.style.display='none'">X</span>
-            <h3>${msg}</h3>
+            <h3 th:text="${msg}"></h3>
         </div>
-    </th:block>
     <div class="w3-container w3-light-blue w3-round">
         <h3><span th:text="'Add new user'"></span></h3>
     </div>
@@ -35,8 +33,8 @@
     </div>
 </div>
 
-<div class="w3-container w3-dark-grey w3-opacity w3-right-align">
-    <h1>Footer</h1>
+<div class="w3-container w3-dark-grey w3-opacity w3-right-align w3-padding">
+    <button class="w3-btn w3-round-large w3-hover-light-grey" onclick="location.href='/login'">Back to login</button>
 </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 package com.example.demo.controllers;
 
-import com.example.demo.UserRepository.UsersRepository;
-import com.example.demo.entities.Users;
+import com.example.demo.entities.Message;
+import com.example.demo.repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class MainController {
 
     @Autowired
-    private UsersRepository usersRepository;
+    private MessageRepository messageRepository;
 
     @Value("${welcome.message}")
     private String message;
@@ -34,14 +36,24 @@ public class MainController {
 
     @GetMapping("/main")
     public String main(Model model){
-
+        List<Message> messages = messageRepository.findAll();
+        model.addAttribute("messages",messages);
         return "main";
     }
 
-//    @PostMapping ("/addUser")
-//    public String addUser (@RequestParam String name, @RequestParam String password){
-//        Users user = new Users(name,password);
-//        usersRepository.save(user);
-//        return "redirect:/main";
-//    }
+    @PostMapping ("/main")
+    public String addMessage (@RequestParam String text, @RequestParam String tag){
+        Message message = new Message(text,tag);
+        messageRepository.save(message);
+        return "redirect:/main";
+    }
+
+    @PostMapping ("/filter")
+    public String addMessage (@RequestParam String filter,Model model){
+        List<Message> messages;
+        if (!filter.isEmpty() && filter!=null) messages = messageRepository.findByTag(filter);
+        else messages=messageRepository.findAll();
+        model.addAttribute("messages", messages);
+        return "/main";
+    }
 }
