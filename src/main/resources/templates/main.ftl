@@ -40,6 +40,7 @@
         </#list>
     </div>
     <div class="w3-container w3-right-align">
+        <button class="w3-btn w3-light-blue w3-round-large w3-margin-bottom" onclick="location.href='/users'">List of users</button>
         <@f.logout/>
     </div>
 </div>
