@@ -20,19 +20,13 @@ public class MainController {
     @Autowired
     private MessageRepository messageRepository;
 
-    @Value("${welcome.message}")
-    private String message;
-
     @GetMapping("/")
     public String home1(Model model){
-        model.addAttribute("message", message);
 
         return "home";
     }
     @GetMapping("/home")
     public String home2(Model model){
-        model.addAttribute("message", message);
-
         return "home";
     }
 

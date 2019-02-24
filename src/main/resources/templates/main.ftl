@@ -15,6 +15,7 @@
         <div class="form-group">
             <input type="text" name="text" placeholder="Enter message" class="w3-input w3-border w3-round-large" style="width: 30%"/>
             <input type="text" name="tag" placeholder="Tag" class="w3-input w3-border w3-round-large" style="width: 30%"/>
+            <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <button type="submit" class="w3-btn w3-light-blue w3-round-large w3-margin-bottom w3-margin-top">Send</button>
         </div>
     </form>
@@ -27,6 +28,7 @@
     <form action="/filter" method="post" class="w3-selection w3-light-grey w3-padding">
         <div class="form-group">
             <input type="text" name="filter" placeholder="Enter message" class="w3-input w3-border w3-round-large" style="width: 30%"/>
+            <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <button type="submit" class="w3-btn w3-light-blue w3-round-large w3-margin-bottom w3-margin-top">Find</button>
         </div>
     </form>
