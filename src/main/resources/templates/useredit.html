@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Hellow world!</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body class="w3-light-grey">
+<div class="w3-container w3-dark-grey w3-opacity w3-right-align">
+    <h1>Super app!</h1>
+</div>
+
+<div class="w3-light-grey w3-round w3-margin w3-card-4">
+    <div class="w3-container w3-light-blue w3-center  w3-round">
+        <h2>Edit user</h2>
+    </div>
+    <div>
+        <form th:action="@{/users}" method="post" class="w3-selection w3-light-grey w3-padding">
+            <input type="hidden" th:value="${user.getId()}" name="userId" />
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" th:value="${user.getUsername()}" name="name" placeholder="User name" class="w3-input w3-border w3-round-large" style="width: 30%"/>
+            </div>
+            <div class="form-group">
+                <label>Roles</label>
+                <div th:each="role:${roles}">
+                    <input type="checkbox" th:name="${role}" th:text="${role}" class="w3-input w3-border w3-round-large" style="width: 30%"/>/>
+                </div>
+                </div>
+            <button type="submit" class="w3-btn w3-green w3-round-large w3-margin-bottom w3-margin-top">Registration</button>
+        </form>
+    </div>
+</div>
+
+<div class="w3-container w3-dark-grey w3-opacity w3-right-align w3-padding">
+    <button class="w3-btn w3-round-large w3-hover-light-grey" onclick="location.href='/users'">Back to list of users</button>
+</div>
+</body>
+</html>
