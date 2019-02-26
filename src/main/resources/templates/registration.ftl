@@ -12,7 +12,7 @@
         <h3>Add new user</h3>
     </div>
     <div>
-        <@f.login path="/registration"/>
+        <@f.login path="/registration" isRegisterForm=true/>
     </div>
 </div>
 <div class="w3-container w3-dark-grey w3-right-align w3-padding">

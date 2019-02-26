@@ -35,7 +35,7 @@
     </form>
     </div>
         <#list messages as message>
-        <div class="w3-card-4 w3-margin" style="width:20%">
+        <div class="w3-card-4 w3-round-large w3-margin" style="width:20%">
             <div class="w3-container">
                 <#if message.filename??>
                     <img src="/img/${message.filename}">
@@ -52,7 +52,6 @@
     </div>
     <div class="w3-container w3-right-align">
         <button class="w3-btn w3-light-blue w3-round-large w3-margin-bottom" onclick="location.href='/users'">List of users</button>
-        <@f.logout/>
     </div>
 </div>
 
