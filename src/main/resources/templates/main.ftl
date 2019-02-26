@@ -11,10 +11,11 @@
         <div class="w3-container">
             <h3>Send message</h3>
         </div>
-    <form action="/main" method="post" class="w3-selection w3-light-grey w3-padding">
+    <form action="/main" enctype="multipart/form-data" method="post" class="w3-selection w3-light-grey w3-padding">
         <div class="form-group">
             <input type="text" name="text" placeholder="Enter message" class="w3-input w3-border w3-round-large" style="width: 30%"/>
             <input type="text" name="tag" placeholder="Tag" class="w3-input w3-border w3-round-large" style="width: 30%"/>
+            <input type="file" name="file" class="w3-input w3-border w3-round-large" style="width: 30%">
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <button type="submit" class="w3-btn w3-light-blue w3-round-large w3-margin-bottom w3-margin-top">Send</button>
         </div>
@@ -34,9 +35,19 @@
     </form>
     </div>
         <#list messages as message>
-        <ul class="w3-ul w3-margin-bottom">
-            <li>${message.text} from ${message.autor.username}</li>
-        </ul>
+        <div class="w3-card-4 w3-margin" style="width:20%">
+            <div class="w3-container">
+                <#if message.filename??>
+                    <img src="/img/${message.filename}">
+                </#if>
+            </div>
+                <div class="w3-container ">
+                ${message.text}
+                </div>
+            <div class="w3-container w3-grey">
+                ${message.autor.username}
+            </div>
+        </div>
         </#list>
     </div>
     <div class="w3-container w3-right-align">
@@ -45,7 +56,7 @@
     </div>
 </div>
 
-<div class="w3-container w3-dark-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-round-large w3-hover-light-grey" onclick="location.href='/login'">Back to login</button>
+<div class="w3-container w3-dark-grey w3-right-align w3-padding">
+    <button class="w3-btn w3-round-large w3-hover-light-blue" onclick="location.href='/login'">Back to login</button>
 </div>
 </@c.page>

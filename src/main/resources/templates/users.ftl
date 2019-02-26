@@ -38,6 +38,7 @@
                                 </td>
                                 <td class="w3-align-left w3-col m3">
                                     <form method="post" action="/users/${user.id}/delete">
+                                        <input type="hidden" name="_csrf" value="${_csrf.token}" />
                                         <button type="submit" class="w3-btn w3-round-large w3-red">Delete</button>
                                     </form>
                                 </td>
@@ -51,7 +52,7 @@
     </div>
 </div>
 
-<div class="w3-container w3-dark-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-round-large w3-hover-light-grey" onclick="location.href='/main'">Back to main</button>
+<div class="w3-container w3-dark-grey w3-right-align w3-padding">
+    <button class="w3-btn w3-round-large w3-hover-light-blue" onclick="location.href='/main'">Back to main</button>
 </div>
 </@c.page>

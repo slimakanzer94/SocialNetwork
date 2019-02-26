@@ -13,7 +13,7 @@
         </h4>
         </div>
     </div>
-    <div class="w3-container w3-dark-grey w3-opacity w3-right-align">
-        <h3>Developed by Larochkin EI</h3>
+    <div class="w3-container w3-dark-grey w3-right-align">
+        <h4>Developed by Larochkin EI</h4>
     </div>
 </@c.page>

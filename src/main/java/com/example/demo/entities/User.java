@@ -48,6 +48,10 @@ public class User implements UserDetails {
     public User() {
     }
 
+    public boolean isAdmin(){
+        return roles.contains(Role.ADMIN);
+    }
+
     public Integer getId() {
         return id;
     }

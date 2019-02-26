@@ -13,6 +13,6 @@
     </div>
 </div>
 
-<div class="w3-container w3-dark-grey w3-opacity w3-right-align w3-padding">
-    <button class="w3-btn w3-round-large w3-hover-light-grey" onclick="location.href='/home'">Back to main</button>
+<div class="w3-container w3-dark-grey w3-right-align w3-padding">
+    <button class="w3-btn w3-round-large w3-hover-light-blue" onclick="location.href='/home'">Back to main</button>
 </@c.page>
