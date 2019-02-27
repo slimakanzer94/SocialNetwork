@@ -6,7 +6,7 @@
         <title>Hellow world!</title>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     </head>
-    <body class="w3-light-grey">
+    <body class="w3-white">
     <div>
         <#include "navbar.ftl">
     </div>

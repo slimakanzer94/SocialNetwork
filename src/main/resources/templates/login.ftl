@@ -2,15 +2,15 @@
 <#import "parts/login.ftl"as f>
 <@c.page>
     <#if msg??>
-        <div class="w3-panel w3-display-container w3-round w3-margin w3-light-green w3-card-4">
-            <span class="w3-button w3-display-topright w3-hover-light-green" onclick="this.parentElement.style.display='none'">X</span>
+        <div class="w3-panel w3-display-container w3-round w3-margin w3-light-${msgType} w3-card-4">
+            <span class="w3-button w3-display-topright w3-hover-${msgType}" onclick="this.parentElement.style.display='none'">X</span>
             <h3>${msg}</h3>
         </div>
     </#if>
-    <#if failed??>
+    <#if Session?? && Session.SPRING_SECURITY_LAST_EXCEPTION??>
         <div class="w3-panel w3-display-container w3-round w3-margin w3-red w3-card-4">
             <span class="w3-button w3-display-topright w3-hover-red" onclick="this.parentElement.style.display='none'">X</span>
-            <h3>${failed}</h3>
+            <h3>${Session.SPRING_SECURITY_LAST_EXCEPTION.message}</h3>
         </div>
     </#if>
 <div class="w3-light-grey w3-round w3-margin w3-card-4">
