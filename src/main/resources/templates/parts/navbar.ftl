@@ -15,6 +15,8 @@
             <input type="submit" value="Sign Out" class="w3-bar-item w3-button w3-right w3-hover-red w3-large"/>
             <input type="hidden" name="_csrf" value="${_csrf.token}"/>
         </form>
+        <#else>
+            <button class="w3-bar-item w3-button w3-right w3-hover-green w3-large" onclick="location.href='/main'">Sign in</button>
     </#if>
     <div class="w3-bar-item w3-large w3-right w3-text-light-blue">${name}</div>
     <#if user??>
